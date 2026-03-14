@@ -211,15 +211,27 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-        import { getDatabase, ref, get, set, remove } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+        import { getDatabase, ref, get, set, remove, update,push } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
 
-        // Firebase Configuration
-        const app = initializeApp({
-            apiKey: "AIzaSyCTSWDR3IvFpzp8UARsClrpwbRtTwr12jA",
-            authDomain: "ndedc-meter-calib.firebaseapp.com",
-            databaseURL: "https://ndedc-meter-calib-default-rtdb.firebaseio.com"
-        });
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYZMvpYRx7GLq_GdHgm62USzF7BminxJw",
+            authDomain: "calibration-1ae85.firebaseapp.com",
+            projectId: "calibration-1ae85",
+            storageBucket: "calibration-1ae85.firebasestorage.app",
+            messagingSenderId: "843037266899",
+            appId: "1:843037266899:web:d8993048e39460b3715526",
+            measurementId: "G-TPB0YW627M"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+        try {
+            getAnalytics(app);
+        } catch (err) {
+            console.warn("Analytics disabled:", err);
+        }
 
         // DOM Elements
         const tableBody1 = document.getElementById("tableBody1");

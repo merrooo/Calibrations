@@ -63,12 +63,12 @@
 
                     <input type="date" id="maint_date" class="calib_date" readonly>
 
-                <div class="table-header-controls">
-                    <input id="searchInput" placeholder="🔍 بحث برقم العداد">
-                    <button id="exportBtn">
-                        <ion-icon name="download-outline"></ion-icon> تصدير Excel
-                    </button>
-                </div>
+                    <div class="table-header-controls">
+                        <input id="searchInput" placeholder="🔍 بحث برقم العداد">
+                        <button id="exportBtn">
+                            <ion-icon name="download-outline"></ion-icon> تصدير Excel
+                        </button>
+                    </div>
                 </div>
             </section>
 
@@ -195,14 +195,13 @@
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyCTSWDR3IvFpzp8UARsClrpwbRtTwr12jA",
-            authDomain: "ndedc-meter-calib.firebaseapp.com",
-            databaseURL: "https://ndedc-meter-calib-default-rtdb.firebaseio.com",
-            projectId: "ndedc-meter-calib",
-            storageBucket: "ndedc-meter-calib.appspot.com",
-            messagingSenderId: "185425429190",
-            appId: "1:185425429190:web:dce85f29eea55ad9f54dc7",
-            measurementId: "G-C6QEKW26MW"
+            apiKey: "AIzaSyBYZMvpYRx7GLq_GdHgm62USzF7BminxJw",
+            authDomain: "calibration-1ae85.firebaseapp.com",
+            projectId: "calibration-1ae85",
+            storageBucket: "calibration-1ae85.firebasestorage.app",
+            messagingSenderId: "843037266899",
+            appId: "1:843037266899:web:d8993048e39460b3715526",
+            measurementId: "G-TPB0YW627M"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -258,7 +257,7 @@
                 Keta3: el("keta3").value,
                 Handsa: el("handsa").value,
                 Removingfor: el("removingfor").value,
-                MRemovingfor: el("mremovingfor").value,
+                Mremovingfor: el("mremovingfor").value,
                 Maintreport: el("maintreport").value,
                 Uploaddate: el("uploaddate").value,
                 Enter_Maint_Date: el("enter_maint_date").value,
@@ -338,7 +337,7 @@
                         <td>${d.Handsa || ""}</td>
                         <td>${d.Removingfor || ""}</td>
                         <td>${d.Uploaddate || ""}</td>
-                        <td>${d.MRemovingfor || ""}</td>
+                        <td>${d.Mremovingfor || ""}</td>
                         <td>${d.Enter_Maint_Date || ""}</td>
                         <td>${d.Notes || ""}</td>
                         <td><span class="status">قيد الصيانة</span></td>
@@ -376,7 +375,7 @@
             el("keta3").value = d.Keta3 || "";
             el("handsa").value = d.Handsa || "";
             el("removingfor").value = d.Removingfor || "";
-            el("mremovingfor").value = d.MRemovingfor || "";
+            el("mremovingfor").value = d.Mremovingfor || "";
             el("uploaddate").value = d.Uploaddate || "";
             el("enter_maint_date").value = d.Enter_Maint_Date || "";
 
