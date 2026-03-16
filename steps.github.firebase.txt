@@ -50,6 +50,7 @@ git version 2.44.0.windows.1
 
 $ echo "# Calculations" >> README.md
 $ git init
+ >> write it on power shellthis command (rm -r -force MYC-V-1ae85\.git)
 $ git add README.md
 $ git commit -m "first commit"
 $ git branch -M main
