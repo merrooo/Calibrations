@@ -353,6 +353,74 @@
         el("uploaddate").value = new Date().toISOString().split('T')[0];
         el("enter_calib_date").value = new Date().toISOString().split('T')[0];
 
+        // تفعيل خيار "إضافة نوع جديد" في القوائم (يستثنى الهندسة/القطاع)
+        function enableAddNewOptions() {
+            const exclude = new Set(["handsa", "keta3", "hansa", "keta3","rosas","error","mstat","type","mconn"]);
+
+            const ensurePlaceholder = (select) => {
+                const id = (select.id || "").toLowerCase();
+                if (exclude.has(id)) return;
+                if (select.querySelector(".add-new-option")) return;
+                const opt = document.createElement("option");
+                opt.value = "ADD_NEW";
+                opt.className = "add-new-option";
+                opt.textContent = "➕ إضافة نوع جديد...";
+                select.appendChild(opt);
+            };
+
+            const attachHandler = (select) => {
+                const id = (select.id || "").toLowerCase();
+                if (exclude.has(id)) return;
+                select.addEventListener("change", async (e) => {
+                    if (e.target.value !== "ADD_NEW") return;
+
+                    const { value: newValue } = await Swal.fire({
+                        title: "إضافة خيار جديد",
+                        input: "text",
+                        inputLabel: "اكتب الخيار الجديد",
+                        showCancelButton: true,
+                        confirmButtonText: "حفظ",
+                        cancelButtonText: "إلغاء",
+                        inputValidator: (v) =>
+                            !v?.trim() ? "يرجى إدخال نص صحيح" : null,
+                    });
+
+                    const trimmed = newValue?.trim();
+                    if (!trimmed) {
+                        select.value = "";
+                        return;
+                    }
+
+                    const exists = Array.from(select.options).some(
+                        (opt) =>
+                            opt.value.toLowerCase() === trimmed.toLowerCase() &&
+                            opt.value !== "ADD_NEW",
+                    );
+
+                    if (exists) {
+                        Swal.fire("تنبيه", "الخيار موجود بالفعل", "info");
+                        select.value = trimmed;
+                        return;
+                    }
+
+                    const option = document.createElement("option");
+                    option.value = trimmed;
+                    option.textContent = trimmed;
+
+                    const addNewOption = select.querySelector(".add-new-option");
+                    select.insertBefore(option, addNewOption);
+                    select.value = trimmed;
+                    Swal.fire("تم", "تمت إضافة الخيار الجديد", "success");
+                });
+            };
+
+            document.querySelectorAll("select").forEach((select) => {
+                ensurePlaceholder(select);
+                attachHandler(select);
+            });
+        }
+        enableAddNewOptions();
+
         // Function to format date
         function formatDate(dateStr) {
             const date = new Date(dateStr);

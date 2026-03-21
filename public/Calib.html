@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -248,6 +248,7 @@
             <option>تلاعب بمجموعة المسجل</option>
             <option>تلاعب بالعداد</option>
             <option>الزجاج مكسور</option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
           <select id="mgood" aria-label="Meter status">
             <option value="">▾سليم</option>
@@ -260,6 +261,7 @@
               العداد سليم ونسبة الخطأ فى حدود المسموح بها ويتم ارتجاعه للمخازن
             </option>
             <option>العداد سليم وتعدى مدة التركيب-ويتم تكهينة</option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
           <select id="crab" aria-label="Defective meter">
             <option value="">▾عاطل</option>
@@ -273,6 +275,7 @@
             <option>عاطل الشاشة لاتعمل</option>
             <option>عاطل لايقبل الشحن</option>
             <option>عاطل الموصل لا يعمل</option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
           <select id="format" aria-label="Formatting">
             <option value="">▾التهيئة</option>
@@ -282,6 +285,7 @@
             <option>تهيئة العداد بمعرفة مشرف القطاع</option>
             <option>المديونية مستحقة</option>
             <option>الرصيد صحيح ومستحق</option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
           <select id="maintain" aria-label="Maintenance">
             <option value="">▾الصيانة</option>
@@ -319,6 +323,7 @@
             <option>
               العداد يسجل استهلاك بدون حمل ارسالة للشركة الموردة للصيانة
             </option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
           <select id="reinf" aria-label="Installation and replacement">
             <option value="">▾الأحلال والتركيب</option>
@@ -326,6 +331,7 @@
             <option>تركيب عداد ثلاثى مسبق الدفع</option>
             <option>تركيب لوحه مسبق الدفع</option>
             <option>تركيب عداد على الجهد المتوسط</option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
           <textarea id="notes" placeholder="ملاحظات" aria-label="Notes"></textarea>
 
@@ -334,6 +340,7 @@
           </select>
           <select id="user_2" aria-label="Second committee member">
             <option value="">▾ اختر عضو اللجنة الثاني</option>
+            <option value="ADD_NEW" class="add-new-option">➕ إضافة تقرير جديد...</option>
           </select>
         </div>
 
@@ -400,6 +407,59 @@
       el("calib_date").value = today;
     }
     setTodayDates();
+
+    // تفعيل خيار "إضافة نوع جديد" في القوائم المنسدلة
+    function enableAddNewOptions() {
+      const addNewHandler = (select) => {
+        select.addEventListener("change", async (e) => {
+          if (e.target.value !== "ADD_NEW") return;
+
+          const { value: newValue } = await Swal.fire({
+            title: "إضافة خيار جديد",
+            input: "text",
+            inputLabel: "اكتب الخيار الجديد",
+            showCancelButton: true,
+            confirmButtonText: "حفظ",
+            cancelButtonText: "إلغاء",
+            inputValidator: (v) =>
+              !v?.trim() ? "يرجى إدخال نص صحيح" : null,
+          });
+
+          const trimmed = newValue?.trim();
+          if (!trimmed) {
+            select.value = "";
+            return;
+          }
+
+          const exists = Array.from(select.options).some(
+            (opt) =>
+              opt.value.toLowerCase() === trimmed.toLowerCase() &&
+              opt.value !== "ADD_NEW",
+          );
+
+          if (exists) {
+            toast("الخيار موجود بالفعل", "info");
+            select.value = trimmed;
+            return;
+          }
+
+          const option = document.createElement("option");
+          option.value = trimmed;
+          option.textContent = trimmed;
+
+          // إدراجه أمام خيار الإضافة للأصل
+          const addNewOption = select.querySelector(".add-new-option");
+          select.insertBefore(option, addNewOption);
+          select.value = trimmed;
+          toast("تمت إضافة الخيار الجديد");
+        });
+      };
+
+      document
+        .querySelectorAll("option.add-new-option")
+        .forEach((opt) => addNewHandler(opt.parentElement));
+    }
+    enableAddNewOptions();
 
     // Format date for display
     function formatDate(dateStr) {
@@ -805,3 +865,4 @@
 </body>
 
 </html>
+
