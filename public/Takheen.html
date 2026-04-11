@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>نظام التكهين - فحص العدادات الكهربائية</title>
+  <title>نظام التكهين - تكهين العدادات الكهربائية</title>
 
-  <link rel="stylesheet" href="G1_Calib.css" />
+  <link rel="stylesheet" href="G1_Calib.css">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -25,87 +26,42 @@
             <button class="dropdown-btn" id="dropdownBtn">
               ▾ اختر الصفحة للانتقال
             </button>
-
             <div class="dropdown-menu" id="dropdownMenu">
               <div class="dropdown-group" data-icon="📁">الفحص</div>
-              <div class="dropdown-item" data-page="Entr_Calib.html">
-                دخول فحص عداد
-              </div>
+              <div class="dropdown-item" data-page="Entr_Calib.html">دخول فحص عداد</div>
               <div class="dropdown-item" data-page="Calib.html">فحص عداد</div>
-              <div class="dropdown-item" data-page="Edite_Calib.html">
-                تعديل بيانات فحص عداد
-              </div>
-              <div class="dropdown-item" data-page="Print_Out_Calib.html">
-                طباعة تقرير فحص عداد
-              </div>
-              <div class="dropdown-item" data-page="Recived_Calib.html">
-                تسليم عداد
-              </div>
+              <div class="dropdown-item" data-page="Edite_Calib.html">تعديل بيانات فحص عداد</div>
+              <div class="dropdown-item" data-page="Print_Out_Calib.html">طباعة تقرير فحص عداد</div>
+              <div class="dropdown-item" data-page="Recived_Calib.html">تسليم عداد</div>
 
               <div class="dropdown-group" data-icon="📊">تقارير الفحص</div>
-              <div class="dropdown-item" data-page="R_Entr_Calib.html">
-                تقرير دخول فحص عداد
-              </div>
-              <div class="dropdown-item" data-page="R_Calib.html">
-                تقرير فحص عداد
-              </div>
+              <div class="dropdown-item" data-page="R_Entr_Calib.html">تقرير دخول فحص عداد</div>
+              <div class="dropdown-item" data-page="R_Calib.html">تقرير فحص عداد</div>
 
               <div class="dropdown-group" data-icon="🛠️">الصيانة</div>
-              <div class="dropdown-item" data-page="Entr_Maint.html">
-                دخول صيانة عداد
-              </div>
-              <div class="dropdown-item" data-page="Maint.html">
-                صيانة عداد
-              </div>
-              <div class="dropdown-item" data-page="Edite_Maint.html">
-                تعديل بيانات صيانة عداد
-              </div>
-              <div class="dropdown-item" data-page="Print_Out_SMaint.html">
-                طباعة تقرير فحص صيانة عداد
-              </div>
-              <div class="dropdown-item" data-page="Print_Out_TMaint.html">
-                طباعة تقرير مجمع صيانة عداد
-              </div>
+              <div class="dropdown-item" data-page="Entr_Maint.html">دخول صيانة عداد</div>
+              <div class="dropdown-item" data-page="Maint.html">صيانة عداد</div>
+              <div class="dropdown-item" data-page="Edite_Maint.html">تعديل بيانات صيانة عداد</div>
+              <div class="dropdown-item" data-page="Print_Out_SMaint.html">طباعة تقرير فحص صيانة عداد</div>
+              <div class="dropdown-item" data-page="Print_Out_TMaint.html">طباعة تقرير مجمع صيانة عداد</div>
 
               <div class="dropdown-group" data-icon="📑">تقارير الصيانة</div>
-              <div class="dropdown-item" data-page="R_Entr_Maint.html">
-                تقرير دخول صيانة عداد
-              </div>
-              <div class="dropdown-item" data-page="R_Maint.html">
-                تقرير صيانة عداد
-              </div>
+              <div class="dropdown-item" data-page="R_Entr_Maint.html">تقرير دخول صيانة عداد</div>
+              <div class="dropdown-item" data-page="R_Maint.html">تقرير صيانة عداد</div>
 
               <div class="dropdown-group" data-icon="♻️">التكهين</div>
-              <div class="dropdown-item" data-page="Takheen.html">
-                تكهين عداد
-              </div>
-              <div class="dropdown-item" data-page="Edite_Takheen.html">
-                تعديل بيانات تكهين عداد
-              </div>
-              <div class="dropdown-item" data-page="R_Takheen.html">
-                تقرير تكهين عداد
-              </div>
+              <div class="dropdown-item" data-page="Takheen.html">تكهين عداد</div>
+              <div class="dropdown-item" data-page="Edite_Takheen.html">تعديل بيانات تكهين عداد</div>
+              <div class="dropdown-item" data-page="R_Maint_Takheen.html">تقرير تكهين عداد</div>
 
               <div class="dropdown-group" data-icon="🗄️">الأرشيف</div>
-              <div class="dropdown-item" data-page="R_Calib_Archive.html">
-                أرشيف الفحص
-              </div>
-              <div class="dropdown-item" data-page="R_Maint_Archive.html">
-                أرشيف الصيانة
-              </div>
-              <div class="dropdown-item" data-page="Re_Print_Out_Calib.html">
-                إعادة طباعة تقرير فحص عداد
-              </div>
-              <div class="dropdown-item" data-page="Re_Print_Out_SMaint.html">
-                إعادة طباعة تقرير فحص صيانة عداد
-              </div>
-              <div class="dropdown-item" data-page="Re_Print_Out_TMaint.html">
-                إعادة طباعة تقرير مجمع صيانة عداد
-              </div>
+              <div class="dropdown-item" data-page="R_Calib_Archive.html">أرشيف الفحص</div>
+              <div class="dropdown-item" data-page="R_Maint_Archive.html">أرشيف الصيانة</div>
+              <div class="dropdown-item" data-page="Re_Print_Out_Calib.html">إعادة طباعة تقرير فحص عداد</div>
+              <div class="dropdown-item" data-page="Re_Print_Out_SMaint.html">إعادة طباعة تقرير فحص صيانة عداد</div>
+              <div class="dropdown-item" data-page="Re_Print_Out_TMaint.html">إعادة طباعة تقرير مجمع صيانة عداد</div>
 
-              <div class="dropdown-item" data-page="Main_Dashboard.html" data-icon="🏠">
-                الصفحة الرئيسية
-              </div>
+              <div class="dropdown-item" data-page="Main_Dashboard.html" data-icon="🏠">الصفحة الرئيسية</div>
             </div>
           </div>
 
@@ -144,7 +100,7 @@
             </thead>
             <tbody id="tableBody">
               <tr id="noDataRow">
-                <td colspan="11" class="no-data-cell">
+                <td colspan="15" class="no-data-cell">
                   <ion-icon name="document-outline"></ion-icon>
                   <p>لا توجد بيانات لعرضها</p>
                   <p>ابدأ بإضافة بيانات جديدة</p>
@@ -207,6 +163,7 @@
 
           <input id="mno" placeholder="رقم العداد" />
           <input id="mname" placeholder="اسم المشترك" />
+
           <select id="keta3" aria-label="القطاع">
             <option value="">▾ القطاع</option>
             <option>دمياط</option>
@@ -273,6 +230,7 @@
             <option>هندسة بلطيم</option>
             <option>هندسة برج البرلس</option>
           </select>
+
           <select id="mtype" aria-label="نوع العداد">
             <option value="">▾ اختر نوع العداد</option>
             <option>جلوبال-مسبق</option>
@@ -285,6 +243,7 @@
             <option>عدادات-ذكية</option>
             <option>أخرى</option>
           </select>
+
           <select id="removingfor" aria-label="سبب الرفع">
             <option value="">سبب الرفع</option>
             <option>الفحص</option>
@@ -304,39 +263,21 @@
           <select id="mremovingfor" aria-label="تقرير فحص الهندسة">
             <option value="">تقرير فحص الهندسة</option>
             <option>عطل بالبطارية ارسالة للشركة الموردة للصيانة</option>
-            <option>
-              قارىء الكروت لا يعمل ارسالة للشركة الموردة للصيانة
-            </option>
-            <option>
-              العداد لا يقبل الشحن ارسالة للشركة الموردة للصيانة
-            </option>
-            <option>
-              العداد لا يقوم بالتوصيل ارسالة للشركة الموردة للصيانة
-            </option>
+            <option>قارىء الكروت لا يعمل ارسالة للشركة الموردة للصيانة</option>
+            <option>العداد لا يقبل الشحن ارسالة للشركة الموردة للصيانة</option>
+            <option>العداد لا يقوم بالتوصيل ارسالة للشركة الموردة للصيانة</option>
             <option>الشاشة عاطلة ارسالة للشركة الموردة للصيانة</option>
-            <option>
-              العداد يحتاج للتهيئة ارسالة للشركة الموردة للصيانة
-            </option>
+            <option>العداد يحتاج للتهيئة ارسالة للشركة الموردة للصيانة</option>
             <option>تقرير فحص للعداد من قبل الشركة الموردة</option>
-            <option>
-              تلف بجسم/روزتة العداد ارسالة للشركة الموردة للصيانة
-            </option>
+            <option>تلف بجسم/روزتة العداد ارسالة للشركة الموردة للصيانة</option>
             <option>زيادة قدرة ارسالة للشركة الموردة للصيانة</option>
             <option>بحث مديونية بالعداد ارسالة للشركة الموردة للصيانة</option>
             <option>العداد محترق ارسالة للشركة الموردة للصيانة</option>
             <option>العداد لا يعمل ارسالة للشركة الموردة للصيانة</option>
-            <option>
-              لمبة التلاعب تعمل باستمرار ارسالة للشركة الموردة للصيانة
-            </option>
-            <option>
-              العداد يعمل بدون شحن ارسالة للشركة الموردة للصيانة
-            </option>
-            <option>
-              العداد لا يسجل الاستهلاك ارسالة للشركة الموردة للصيانة
-            </option>
-            <option>
-              العداد يسجل استهلاك بدون حمل ارسالة للشركة الموردة للصيانة
-            </option>
+            <option>لمبة التلاعب تعمل باستمرار ارسالة للشركة الموردة للصيانة</option>
+            <option>العداد يعمل بدون شحن ارسالة للشركة الموردة للصيانة</option>
+            <option>العداد لا يسجل الاستهلاك ارسالة للشركة الموردة للصيانة</option>
+            <option>العداد يسجل استهلاك بدون حمل ارسالة للشركة الموردة للصيانة</option>
             <option>blocking</option>
           </select>
 
@@ -347,14 +288,13 @@
             <option>تلاعب</option>
             <option>زيادة قدرة</option>
           </select>
+
           <textarea id="notes" placeholder="ملاحظات"></textarea>
         </div>
 
         <div class="buttons">
           <button id="saveBtn" class="primary">حفظ</button>
-          <button id="editBtn" class="warning">تعديل</button>
           <button id="clearBtn" class="secondary">تفريغ</button>
-          <button id="deleteBtn" class="danger">حذف</button>
         </div>
       </section>
     </div>
@@ -362,23 +302,15 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-    import {
-      getDatabase,
-      ref,
-      get,
-      set,
-      remove,
-      update,
-    } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+    import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
 
     const firebaseConfig = {
-      apiKey: "AIzaSyBYZMvpYRx7GLq_GdHgm62USzF7BminxJw",
-      authDomain: "calibration-1ae85.firebaseapp.com",
-      projectId: "calibration-1ae85",
-      storageBucket: "calibration-1ae85.firebasestorage.app",
-      messagingSenderId: "843037266899",
-      appId: "1:843037266899:web:d8993048e39460b3715526",
-      measurementId: "G-TPB0YW627M"
+      apiKey: "AIzaSyAnKRhT5xJTBvsQKpW7e9w-hGSbAQJWTSo",
+      authDomain: "production1-ae85.firebaseapp.com",
+      projectId: "production1-ae85",
+      storageBucket: "production1-ae85.firebasestorage.app",
+      messagingSenderId: "490438031865",
+      appId: "1:490438031865:web:a4a69335989f30cd13a528",
     };
 
     const app = initializeApp(firebaseConfig);
@@ -388,7 +320,9 @@
     const tableBody = el("tableBody");
     const rowCount = el("rowCountValue");
     const searchInput = el("searchInput");
-    let currentKey = null;
+
+    let allData = [];
+    let filteredData = [];
 
     const toast = (title, icon = "success") => {
       Swal.fire({
@@ -408,24 +342,258 @@
       if (el("takheendate")) el("takheendate").value = today;
     }
 
-    // تفعيل خيار "إضافة نوع جديد" في القوائم (باستثناء الهندسة/القطاع)
-    function enableAddNewOptions() {
-      const exclude = new Set(["handsa", "keta3", "hansa", "keta3","rosas","error","mstat","type","mconn"]);
+    function formatDate(dateStr) {
+      if (!dateStr) return "";
+      const date = new Date(dateStr);
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
 
-      const ensurePlaceholder = (select) => {
+    // Fetch records from Archive_Takheen only
+    async function fetchData() {
+      tableBody.innerHTML = "<tr><td colspan='15' class='no-data-cell'>جاري التحميل...</td></tr>";
+
+      Swal.fire({
+        title: "جاري جلب البيانات...",
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading(),
+      });
+
+      try {
+        const snapshot = await get(ref(db, "Archive_Takheen"));
+        tableBody.innerHTML = "";
+        allData = [];
+
+        if (!snapshot.exists()) {
+          tableBody.innerHTML = `
+            <tr id="noDataRow">
+              <td colspan="15" class="no-data-cell">
+                <ion-icon name="document-outline"></ion-icon>
+                <p>لا توجد بيانات في أرشيف التكهين</p>
+                <p>قم بإضافة بيانات جديدة</p>
+               </tr>
+          `;
+          updateRowCount();
+          Swal.close();
+          return;
+        }
+
+        snapshot.forEach((child) => {
+          const record = child.val().otherdata || child.val();
+          allData.push({ 
+            ...record, 
+            firebaseKey: child.key 
+          });
+        });
+
+        filteredData = [...allData];
+        renderTable();
+        Swal.close();
+        
+        if (allData.length === 0) {
+          Swal.fire({
+            icon: "info",
+            title: "لا توجد بيانات",
+            text: "لا توجد بيانات في أرشيف التكهين",
+            confirmButtonText: "حسناً"
+          });
+        }
+      } catch (err) {
+        Swal.fire("خطأ", "فشل تحميل البيانات: " + err.message, "error");
+        console.error(err);
+      }
+    }
+
+    function renderTable() {
+      tableBody.innerHTML = "";
+
+      if (filteredData.length === 0) {
+        tableBody.innerHTML = `
+          <tr id="noDataRow">
+            <td colspan="15" class="no-data-cell">
+              <ion-icon name="document-outline"></ion-icon>
+              <p>لا توجد بيانات لعرضها</p>
+              <p>أرشيف التكهين فارغ</p>
+             </tr>
+        `;
+        updateRowCount();
+        return;
+      }
+
+      filteredData.forEach((d) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${d.Type || ""}</td>
+          <td>${d.MNO || ""}</td>
+          <td>${d.MNAME || ""}</td>
+          <td>${d.Mtype || ""}</td>
+          <td>${d.Connection || ""}</td>
+          <td>${d.YEAR || ""}</td>
+          <td>${d.Keta3 || ""}</td>
+          <td>${d.Handsa || ""}</td>
+          <td>${d.Removingfor || ""}</td>
+          <td>${formatDate(d.Uploaddate)}</td>
+          <td>${d.Mremovingfor || ""}</td>
+          <td>${d.Takheenfor || ""}</td>
+          <td>${formatDate(d.Takheendate)}</td>
+          <td>${d.Notes || ""}</td>
+          <td><span class="status completed">تم التكهين</span></td>
+        `;
+        tr.onclick = () => fillForm(d);
+        tableBody.appendChild(tr);
+      });
+      updateRowCount();
+    }
+
+    function fillForm(d) {
+      // Remove previous selection
+      document.querySelectorAll(".selected-row").forEach(r => {
+        r.classList.remove("selected-row");
+        r.style.backgroundColor = "";
+      });
+      
+      // Highlight current row
+      const rows = document.querySelectorAll("#tableBody tr");
+      rows.forEach(row => {
+        if (row.cells[1]?.innerText === d.MNO) {
+          row.classList.add("selected-row");
+          row.style.backgroundColor = "#e3f2fd";
+        }
+      });
+      
+      el("mno").value = d.MNO || "";
+      el("mname").value = d.MNAME || "";
+      el("type").value = d.Type || "";
+      el("mconn").value = d.Connection || "";
+      el("year").value = d.YEAR || "";
+      el("keta3").value = d.Keta3 || "";
+      el("handsa").value = d.Handsa || "";
+      el("mtype").value = d.Mtype || "";
+      el("removingfor").value = d.Removingfor || "";
+      el("mremovingfor").value = d.Mremovingfor || "";
+      el("takheenfor").value = d.Takheenfor || "";
+      el("uploaddate").value = d.Uploaddate || "";
+      el("takheendate").value = d.Takheendate || "";
+      el("notes").value = d.Notes || "";
+
+      // Store the record for saving/editing
+      window.selectedRecord = d;
+      toast(`تم اختيار العداد: ${d.MNO}`, "info");
+    }
+
+    async function saveData() {
+      const mno = el("mno").value.trim();
+      if (!mno) {
+        Swal.fire("تحذير", "يرجى إدخال رقم العداد", "warning");
+        return;
+      }
+
+      const takheenfor = el("takheenfor").value;
+      if (!takheenfor) {
+        Swal.fire("تحذير", "يرجى اختيار سبب التكهين", "warning");
+        return;
+      }
+
+      Swal.fire({
+        title: "جاري الحفظ...",
+        didOpen: () => Swal.showLoading(),
+      });
+
+      const takheendate = el("takheendate").value || new Date().toISOString().split("T")[0];
+
+      const meterData = {
+        MNO: el("mno").value,
+        MNAME: el("mname")?.value || "",
+        Type: el("type").value,
+        Keta3: el("keta3").value,
+        Handsa: el("handsa").value,
+        Mtype: el("mtype").value,
+        Connection: el("mconn").value,
+        YEAR: el("year").value,
+        Removingfor: el("removingfor").value,
+        Mremovingfor: el("mremovingfor").value,
+        Takheenfor: takheenfor,
+        Uploaddate: el("uploaddate").value,
+        Takheendate: takheendate,
+        Notes: el("notes").value,
+        Status: "تم التكهين",
+        TakheenTimestamp: new Date().toISOString()
+      };
+
+      try {
+        const safeKey = mno.replace(/[.#$[\]]/g, "_");
+        
+        // Save ONLY to Archive_Takheen
+        await set(ref(db, `Archive_Takheen/${safeKey}`), { otherdata: meterData });
+
+        Swal.fire({
+          icon: "success",
+          title: "تم الحفظ!",
+          text: "تم تسجيل بيانات التكهين بنجاح في الأرشيف",
+          timer: 2000,
+          showConfirmButton: false
+        });
+
+        // Clear form and refresh
+        clearFilters();
+        fetchData();
+      } catch (err) {
+        Swal.fire("خطأ", "حدث خطأ أثناء الحفظ: " + err.message, "error");
+      }
+    }
+
+    function updateRowCount() {
+      const visibleRows = document.querySelectorAll("#tableBody tr:not(#noDataRow)");
+      rowCount.textContent = visibleRows.length;
+    }
+
+    function searchTable() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+
+      if (!searchTerm) {
+        filteredData = [...allData];
+      } else {
+        filteredData = allData.filter(d =>
+          (d.MNO && d.MNO.toString().toLowerCase().includes(searchTerm)) ||
+          (d.MNAME && d.MNAME.toLowerCase().includes(searchTerm)) ||
+          (d.Handsa && d.Handsa.toLowerCase().includes(searchTerm)) ||
+          (d.Keta3 && d.Keta3.toLowerCase().includes(searchTerm))
+        );
+      }
+
+      renderTable();
+    }
+
+    function clearFilters() {
+      document.querySelectorAll("input, select, textarea").forEach((input) => {
+        if (input.id !== "searchInput") input.value = "";
+      });
+      setTodayDates();
+      window.selectedRecord = null;
+      document.querySelectorAll(".selected-row").forEach((r) => {
+        r.classList.remove("selected-row");
+        r.style.backgroundColor = "";
+      });
+      toast("تم تنظيف النموذج", "success");
+    }
+
+    // Add new option functionality
+    function enableAddNewOptions() {
+      const exclude = new Set(["handsa", "keta3", "type", "mconn"]);
+
+      document.querySelectorAll("select").forEach((select) => {
         const id = (select.id || "").toLowerCase();
         if (exclude.has(id)) return;
         if (select.querySelector(".add-new-option")) return;
+
         const opt = document.createElement("option");
         opt.value = "ADD_NEW";
         opt.className = "add-new-option";
         opt.textContent = "➕ إضافة نوع جديد...";
         select.appendChild(opt);
-      };
 
-      const attachHandler = (select) => {
-        const id = (select.id || "").toLowerCase();
-        if (exclude.has(id)) return;
         select.addEventListener("change", async (e) => {
           if (e.target.value !== "ADD_NEW") return;
 
@@ -436,8 +604,7 @@
             showCancelButton: true,
             confirmButtonText: "حفظ",
             cancelButtonText: "إلغاء",
-            inputValidator: (v) =>
-              !v?.trim() ? "يرجى إدخال نص صحيح" : null,
+            inputValidator: (v) => !v?.trim() ? "يرجى إدخال نص صحيح" : null,
           });
 
           const trimmed = newValue?.trim();
@@ -447,9 +614,7 @@
           }
 
           const exists = Array.from(select.options).some(
-            (opt) =>
-              opt.value.toLowerCase() === trimmed.toLowerCase() &&
-              opt.value !== "ADD_NEW",
+            (opt) => opt.value.toLowerCase() === trimmed.toLowerCase() && opt.value !== "ADD_NEW"
           );
 
           if (exists) {
@@ -461,256 +626,21 @@
           const option = document.createElement("option");
           option.value = trimmed;
           option.textContent = trimmed;
-
           const addNewOption = select.querySelector(".add-new-option");
           select.insertBefore(option, addNewOption);
           select.value = trimmed;
           toast("تمت إضافة الخيار الجديد");
         });
-      };
-
-      document.querySelectorAll("select").forEach((select) => {
-        ensurePlaceholder(select);
-        attachHandler(select);
       });
     }
-    enableAddNewOptions();
 
-    function formatDate(dateStr) {
-      if (!dateStr) return "";
-      const date = new Date(dateStr);
-      const day = String(date.getDate()).padStart(2, "0");
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const year = date.getFullYear();
-      return `${day}/${month}/${year}`;
-    }
-
-    async function fetchData() {
-      tableBody.innerHTML =
-        "<tr><td colspan='12' class='no-data-cell'>جاري التحميل...</td></tr>";
-
-      Swal.fire({
-        title: "جاري جلب البيانات...",
-        allowOutsideClick: false,
-        didOpen: () => Swal.showLoading(),
-      });
-
-      try {
-        const snap = await get(ref(db, "Takheen"));
-        tableBody.innerHTML = "";
-        filteredData = [];
-
-        if (!snap.exists()) {
-          tableBody.innerHTML = `
-                    <tr id="noDataRow">
-                        <td colspan="11" class="no-data-cell">
-                            <ion-icon name="document-outline"></ion-icon>
-                            <p>لا توجد بيانات لعرضها</p>
-                            <p>ابدأ بإضافة بيانات جديدة</p>
-                        </td>
-                    </tr>`;
-          updateRowCount();
-          Swal.close();
-          return;
-        }
-
-        snap.forEach((c) => {
-          const d = c.val().otherdata || c.val();
-          filteredData.push(d);
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-                        <td>${d.Type || ""}</td>
-                        <td>${d.MNO || ""}</td>
-                        <td>${d.MNAME || ""}</td>
-                        <td>${d.Mtype || ""}</td>
-                        <td>${d.Connection || ""}</td>
-                        <td>${d.YEAR || ""}</td>
-                        <td>${d.Keta3 || ""}</td>
-                        <td>${d.Handsa || ""}</td>
-                        <td>${d.Removingfor || ""}</td>
-                        <td>${formatDate(d.Uploaddate)}</td>
-                        <td>${d.MRemovingfor || ""}</td>
-                        <td>${d.Takheenfor || ""}</td>
-                        <td>${formatDate(d.Takheendate)}</td>
-                        <td>${d.Notes || ""}</td>
-                        <td><span class="status">قيد التكهين</span></td>
-                    `;
-          tr.onclick = () => fillForm(d, c.key, tr);
-          tableBody.appendChild(tr);
-        });
-
-        Swal.close();
-        updateRowCount();
-      } catch (err) {
-        Swal.fire("خطأ", "فشل تحميل البيانات", "error");
-        console.error(err);
-      }
-    }
-
-    function fillForm(d, key, row) {
-      currentKey = key;
-      document
-        .querySelectorAll(".selected-row")
-        .forEach((r) => r.classList.remove("selected-row"));
-      row.classList.add("selected-row");
-
-      el("mno").value = d.MNO || "";
-      el("mname").value = d.MNAME || "";
-      el("type").value = d.Type || "";
-      el("mconn").value = d.Connection || "";
-      el("year").value = d.YEAR || "";
-      el("keta3").value = d.Keta3 || "";
-      el("handsa").value = d.Handsa || "";
-      el("mtype").value = d.Mtype || "";
-      el("removingfor").value = d.Removingfor || "";
-      el("mremovingfor").value = d.MRemovingfor || "";
-      el("takheenfor").value = d.Takheenfor || "";
-      el("uploaddate").value = d.Uploaddate || "";
-      el("notes").value = d.Notes || "";
-
-      toast(`تم اختيار العداد: ${d.MNO}`, "info");
-    }
-
-    async function saveData() {
-      const mnoValue = el("mno").value.trim();
-      if (!mnoValue) {
-        Swal.fire("تحذير", "يرجى إدخال رقم العداد", "warning");
-        return;
-      }
-
-      Swal.fire({
-        title: "جاري الحفظ...",
-        didOpen: () => Swal.showLoading(),
-      });
-
-      const meterData = {
-        MNO: el("mno").value,
-        MNAME: el("mname")?.value || "",
-        Type: el("type").value,
-        Connection: el("mconn").value,
-        YEAR: el("year").value,
-        Keta3: el("keta3").value,
-        Handsa: el("handsa").value,
-        Mtype: el("mtype").value,
-        Removingfor: el("removingfor").value,
-        MRemovingfor: el("mremovingfor").value,
-        Takheenfor: el("takheenfor").value,
-        Uploaddate: el("uploaddate").value,
-        Takheendate: el("takheendate").value,
-        Notes: el("notes").value,
-        Timestamp: new Date().toISOString(),
-      };
-
-      try {
-        const safeKey = mnoValue.replace(/[.#$[\]]/g, "_");
-        await set(ref(db, `Takheen/${safeKey}`), { otherdata: meterData });
-        await set(ref(db, `Archive_Takheen/${safeKey}`), {
-          otherdata: meterData,
-        });
-
-        Swal.fire("تم الحفظ!", "تم تسجيل البيانات بنجاح.", "success");
-        fetchData();
-        clearFilters();
-      } catch (err) {
-        Swal.fire("خطأ", "حدث خطأ أثناء الحفظ: " + err.message, "error");
-      }
-    }
-
-    function updateRowCount() {
-      const rows = document.querySelectorAll("#tableBody tr:not(#noDataRow)");
-      rowCount.textContent = rows.length;
-    }
-
-    el("searchInput").addEventListener("input", (e) => {
-      const val = e.target.value.toLowerCase();
-      let visibleCount = 0;
-
-      [...document.querySelectorAll("#tableBody tr")].forEach((row) => {
-        // تجاهل صف لا توجد بيانات
-        if (row.id === "noDataRow") return;
-
-        const text = row.innerText.toLowerCase();
-
-        if (text.includes(val)) {
-          row.style.display = "";
-          visibleCount++;
-        } else {
-          row.style.display = "none";
-        }
-      });
-
-      rowCount.textContent = visibleCount;
-    });
-
-    function clearFilters() {
-      document
-        .querySelectorAll("input, select, textarea")
-        .forEach((input) => (input.value = ""));
-      setTodayDates();
-      currentKey = null;
-      document
-        .querySelectorAll(".selected-row")
-        .forEach((r) => r.classList.remove("selected-row"));
-      toast("تم تنظيف النموذج", "success");
-    }
-
-    el("saveBtn").onclick = saveData;
-    el("clearBtn").onclick = clearFilters;
-    el("scrollUp").onclick = () =>
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    el("scrollDown").onclick = () =>
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-
-    setTodayDates();
-    fetchData();
-
-    el("deleteBtn").onclick = () => {
-      Swal.fire({
-        title: "جارى الانتقال",
-        text: "سيتم فتح صفحة الحذف",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 1200,
-      });
-
-      setTimeout(() => {
-        window.location.href = "Edite_Takheen.html";
-      }, 1200);
-    };
-
-    el("editBtn").onclick = () => {
-      Swal.fire({
-        title: "جارى الانتقال",
-        text: "سيتم فتح صفحة التعديل",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 1200,
-      });
-
-      setTimeout(() => {
-        window.location.href = "Edite_Takheen.html";
-      }, 1200);
-    };
-
-    let filteredData = [];
-
-    if (exportBtn) {
-      exportBtn.onclick = () => {
-        if (typeof exportToExcel === "function") exportToExcel();
-        else showToast("وظيفة التصدير غير معرفة", "error");
-      };
-    }
-
-    /* ================= EXPORT ================= */
+    // Export to Excel
     function exportToExcel() {
       if (!filteredData.length) {
         return Swal.fire({
           icon: "warning",
           title: "لا توجد بيانات",
-          text: "لا يمكن تصدير جدول فارغ، يرجى التأكد من وجود بيانات أولاً",
+          text: "لا يمكن تصدير جدول فارغ",
           confirmButtonColor: "#f39c12",
         });
       }
@@ -738,20 +668,16 @@
             الهندسة: o.Handsa || "",
             "سبب الرفع": o.Removingfor || "",
             "تاريخ الرفع": formatDate(o.Uploaddate),
-            "تقرير فحص الهندسة": o.MRemovingfor || "",
+            "تقرير فحص الهندسة": o.Mremovingfor || "",
             "سبب التكهين": o.Takheenfor || "",
             "تاريخ التكهين": formatDate(o.Takheendate),
             ملاحظات: o.Notes || "",
-            "حالة الصيانة": o.Takheenfor ? "تم التكهين" : "قيد الانتظار",
           }));
 
           const ws = XLSX.utils.json_to_sheet(dataToExport);
           const wb = XLSX.utils.book_new();
-          XLSX.utils.book_append_sheet(wb, ws, "التقارير");
-          XLSX.writeFile(
-            wb,
-            `تقرير_التكهين${new Date().toISOString().slice(0, 10)}.xlsx`,
-          );
+          XLSX.utils.book_append_sheet(wb, ws, "أرشيف_التكهين");
+          XLSX.writeFile(wb, `أرشيف_التكهين_${new Date().toISOString().slice(0, 10)}.xlsx`);
 
           Swal.fire({
             icon: "success",
@@ -764,27 +690,44 @@
       });
     }
 
-    // Dropdown Menu Functionality
+    // Event Listeners
+    el("saveBtn").onclick = saveData;
+    el("clearBtn").onclick = clearFilters;
+    el("searchInput").oninput = searchTable;
+
+    const exportBtn = el("exportBtn");
+    if (exportBtn) exportBtn.onclick = exportToExcel;
+
+    el("scrollUp").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    el("scrollDown").onclick = () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+    // Dropdown Menu
     const btn = document.getElementById("dropdownBtn");
     const menu = document.getElementById("dropdownMenu");
 
-    btn.addEventListener("click", () => {
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    });
-
-    document.querySelectorAll(".dropdown-item[data-page]").forEach((item) => {
-      item.addEventListener("click", () => {
-        const page = item.dataset.page;
-        window.open(page, "_blank"); // فتح في تبويب جديد
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
       });
-    });
 
-    // إغلاق عند الضغط خارج القائمة
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".modern-dropdown")) {
-        menu.style.display = "none";
-      }
-    });
+      document.querySelectorAll(".dropdown-item[data-page]").forEach((item) => {
+        item.addEventListener("click", () => {
+          const page = item.dataset.page;
+          window.open(page, "_blank");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".modern-dropdown")) {
+          menu.style.display = "none";
+        }
+      });
+    }
+
+    // Initialize
+    enableAddNewOptions();
+    setTodayDates();
+    fetchData();
   </script>
 </body>
 

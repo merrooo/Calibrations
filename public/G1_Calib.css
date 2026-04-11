@@ -776,3 +776,43 @@ body.dark-mode #searchInput {
 .date-group {
   display: contents;
 }
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.status.completed {
+    background-color: #27ae60;
+    color: white;
+}
+
+.status.pending {
+    background-color: #f39c12;
+    color: white;
+}
+
+.selected-row {
+    background-color: #e3f2fd !important;
+    transition: background-color 0.3s ease;
+}
+
+.selected-row td {
+    background-color: #e3f2fd !important;
+}
+
+#tableBody tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#tableBody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.no-data-cell {
+    text-align: center;
+    padding: 40px !important;
+}

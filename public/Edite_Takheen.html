@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>نظام التكهين - فحص العدادات الكهربائية</title>
+    <title>نظام التكهين - تعديل بيانات تكهين العدادات</title>
 
     <link rel="stylesheet" href="G1_Calib.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
@@ -16,19 +16,16 @@
 
 <body>
     <main class="app">
-
         <!-- ================= RIGHT SIDE ================= -->
         <div class="right-side">
-
             <section class="table-top-section">
                 <div class="table-header">
-
+                    <ion-icon name="create-outline"></ion-icon>
 
                     <div class="modern-dropdown">
                         <button class="dropdown-btn" id="dropdownBtn">
                             ▾ اختر الصفحة للانتقال
                         </button>
-
                         <div class="dropdown-menu" id="dropdownMenu">
                             <div class="dropdown-group" data-icon="📁">الفحص</div>
                             <div class="dropdown-item" data-page="Entr_Calib.html">دخول فحص عداد</div>
@@ -45,10 +42,8 @@
                             <div class="dropdown-item" data-page="Entr_Maint.html">دخول صيانة عداد</div>
                             <div class="dropdown-item" data-page="Maint.html">صيانة عداد</div>
                             <div class="dropdown-item" data-page="Edite_Maint.html">تعديل بيانات صيانة عداد</div>
-                            <div class="dropdown-item" data-page="Print_Out_SMaint.html">طباعة تقرير فحص صيانة عداد
-                            </div>
-                            <div class="dropdown-item" data-page="Print_Out_TMaint.html">طباعة تقرير مجمع صيانة عداد
-                            </div>
+                            <div class="dropdown-item" data-page="Print_Out_SMaint.html">طباعة تقرير فحص صيانة عداد</div>
+                            <div class="dropdown-item" data-page="Print_Out_TMaint.html">طباعة تقرير مجمع صيانة عداد</div>
 
                             <div class="dropdown-group" data-icon="📑">تقارير الصيانة</div>
                             <div class="dropdown-item" data-page="R_Entr_Maint.html">تقرير دخول صيانة عداد</div>
@@ -57,27 +52,25 @@
                             <div class="dropdown-group" data-icon="♻️">التكهين</div>
                             <div class="dropdown-item" data-page="Takheen.html">تكهين عداد</div>
                             <div class="dropdown-item" data-page="Edite_Takheen.html">تعديل بيانات تكهين عداد</div>
-                            <div class="dropdown-item" data-page="R_Takheen.html">تقرير تكهين عداد</div>
+                            <div class="dropdown-item" data-page="R_Maint_Takheen.html">تقرير تكهين عداد</div>
 
                             <div class="dropdown-group" data-icon="🗄️">الأرشيف</div>
                             <div class="dropdown-item" data-page="R_Calib_Archive.html">أرشيف الفحص</div>
                             <div class="dropdown-item" data-page="R_Maint_Archive.html">أرشيف الصيانة</div>
-                            <div class="dropdown-item" data-page="Re_Print_Out_Calib.html">إعادة طباعة تقرير فحص عداد
-                            </div>
-                            <div class="dropdown-item" data-page="Re_Print_Out_SMaint.html">إعادة طباعة تقرير فحص صيانة
-                                عداد</div>
-                            <div class="dropdown-item" data-page="Re_Print_Out_TMaint.html">إعادة طباعة تقرير مجمع صيانة
-                                عداد</div>
+                            <div class="dropdown-item" data-page="Re_Print_Out_Calib.html">إعادة طباعة تقرير فحص عداد</div>
+                            <div class="dropdown-item" data-page="Re_Print_Out_SMaint.html">إعادة طباعة تقرير فحص صيانة عداد</div>
+                            <div class="dropdown-item" data-page="Re_Print_Out_TMaint.html">إعادة طباعة تقرير مجمع صيانة عداد</div>
 
-                            <div class="dropdown-item" data-page="Main_Dashboard.html" data-icon="🏠">الصفحة الرئيسية
-                            </div>
+                            <div class="dropdown-item" data-page="Main_Dashboard.html" data-icon="🏠">الصفحة الرئيسية</div>
                         </div>
                     </div>
 
-
-                    <input type="date" id="takheendate" class="calib_date" readonly>
+                    <input type="date" id="currentDate" class="calib_date" readonly />
                     <div class="table-header-controls">
-                        <input id="searchInput" placeholder="🔍 ابحث في جميع الحقول...">
+                        <input id="searchInput" placeholder="🔍 ابحث في جميع الحقول..." />
+                        <button id="exportBtn">
+                            <ion-icon name="download-outline"></ion-icon> تصدير Excel
+                        </button>
                     </div>
                 </div>
             </section>
@@ -103,11 +96,11 @@
                                 <th>تاريخ التكهين</th>
                                 <th>ملاحظات</th>
                                 <th>الحالة</th>
-                            </tr>
+                            </table>
                         </thead>
                         <tbody id="tableBody">
                             <tr id="noDataRow">
-                                <td colspan="11" class="no-data-cell">
+                                <td colspan="15" class="no-data-cell">
                                     <ion-icon name="document-outline"></ion-icon>
                                     <p>لا توجد بيانات لعرضها</p>
                                     <p>ابدأ بإضافة بيانات جديدة</p>
@@ -138,19 +131,18 @@
         <!-- ================= LEFT SIDE ================= -->
         <div class="left-side">
             <section class="glass">
-
                 <div class="header-top">
                     <div class="logo"><ion-icon name="flash-outline"></ion-icon></div>
                     <div class="header-text">
-                        وزارة الكهرباء والطاقة المتجددة<br>
-                        الشركة القابضة لكهرباء مصر<br>
+                        وزارة الكهرباء والطاقة المتجددة<br />
+                        الشركة القابضة لكهرباء مصر<br />
                         شركة شمال الدلتا لتوزيع الكهرباء
                     </div>
                 </div>
 
                 <h1 class="title-main">الإدارة العامة لأنظمة العدادات الحديثة</h1>
 
-                <h3>بيانات تعديل عدادات التكهين </h3>
+                <h3>تعديل بيانات عدادات التكهين</h3>
 
                 <div class="form-grid">
                     <select id="type" aria-label="نوع النظام">
@@ -159,6 +151,7 @@
                         <option>مسبق الدفع</option>
                         <option>العدادات الذكية</option>
                     </select>
+
                     <select id="mconn" aria-label="نوع التوصيل">
                         <option value="">▾نوع التوصيل</option>
                         <option>أحادي</option>
@@ -166,10 +159,11 @@
                         <option>ثلاثي-غير مباشر</option>
                     </select>
 
-                    <input id="year" placeholder="سنة الصنع">
+                    <input id="year" placeholder="سنة الصنع" />
 
-                    <input id="mno" placeholder="رقم العداد">
-                    <input id="mname" placeholder="اسم المشترك">
+                    <input id="mno" placeholder="رقم العداد" />
+                    <input id="mname" placeholder="اسم المشترك" />
+
                     <select id="keta3" aria-label="القطاع">
                         <option value="">▾ القطاع</option>
                         <option>دمياط</option>
@@ -236,11 +230,12 @@
                         <option>هندسة بلطيم</option>
                         <option>هندسة برج البرلس</option>
                     </select>
+
                     <select id="mtype" aria-label="نوع العداد">
                         <option value="">▾ اختر نوع العداد</option>
                         <option>جلوبال-مسبق</option>
                         <option>سويدى-مسبق</option>
-                        <option>الميصرية-مسبق</option>
+                        <option>المصرية-مسبق</option>
                         <option>اسكرا-مسبق</option>
                         <option>جيزة باور-مسبق</option>
                         <option>ميكانيكي</option>
@@ -263,7 +258,7 @@
                     </select>
 
                     <label for="uploaddate">تاريخ الرفع</label>
-                    <input type="date" class="calibdate" id="uploaddate" placeholder="تاريخ الرفع">
+                    <input type="date" class="calibdate" id="uploaddate" placeholder="تاريخ الرفع" />
 
                     <select id="mremovingfor" aria-label="تقرير فحص الهندسة">
                         <option value="">تقرير فحص الهندسة</option>
@@ -293,6 +288,9 @@
                         <option>تلاعب</option>
                         <option>زيادة قدرة</option>
                     </select>
+
+                    <input type="date" id="takheendate" placeholder="تاريخ التكهين" />
+
                     <textarea id="notes" placeholder="ملاحظات"></textarea>
                 </div>
 
@@ -300,12 +298,9 @@
                     <button id="editBtn" class="warning">تعديل</button>
                     <button id="clearBtn" class="secondary">تفريغ</button>
                     <button id="deleteBtn" class="danger">حذف</button>
-
                 </div>
-
             </section>
         </div>
-
     </main>
 
     <script type="module">
@@ -313,63 +308,94 @@
         import { getDatabase, ref, get, set, remove, update } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyBYZMvpYRx7GLq_GdHgm62USzF7BminxJw",
-            authDomain: "calibration-1ae85.firebaseapp.com",
-            projectId: "calibration-1ae85",
-            storageBucket: "calibration-1ae85.firebasestorage.app",
-            messagingSenderId: "843037266899",
-            appId: "1:843037266899:web:d8993048e39460b3715526",
-            measurementId: "G-TPB0YW627M"
+            apiKey: "AIzaSyAnKRhT5xJTBvsQKpW7e9w-hGSbAQJWTSo",
+            authDomain: "production1-ae85.firebaseapp.com",
+            projectId: "production1-ae85",
+            storageBucket: "production1-ae85.firebasestorage.app",
+            messagingSenderId: "490438031865",
+            appId: "1:490438031865:web:a4a69335989f30cd13a528",
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        const el = id => document.getElementById(id);
+        const el = (id) => document.getElementById(id);
         const tableBody = el("tableBody");
         const rowCount = el("rowCountValue");
         const searchInput = el("searchInput");
-        let currentKey = null;
 
-        const toast = (title, icon = 'success') => {
+        let allData = [];
+        let filteredData = [];
+        let currentKey = null;
+        let dataSource = null; // Track which database the data came from
+
+        const toast = (title, icon = "success") => {
             Swal.fire({
                 title: title,
                 icon: icon,
                 toast: true,
-                position: 'top-end',
+                position: "top-end",
                 showConfirmButton: false,
                 timer: 2000,
-                timerProgressBar: true
+                timerProgressBar: true,
             });
         };
 
-        function setTodayDates() {
-            const today = new Date().toISOString().split('T')[0];
-            if (el("uploaddate")) el("uploaddate").value = today;
-            if (el("takheendate")) el("takheendate").value = today;
+        function setTodayDate() {
+            const today = new Date().toISOString().split("T")[0];
+            const dateInput = el("currentDate");
+            if (dateInput) dateInput.value = today;
         }
 
-        // تفعيل خيار "إضافة نوع جديد" في القوائم (يُستثنى الهندسة/القطاع)
-        function enableAddNewOptions() {
-            const exclude = new Set(["handsa", "keta3", "hansa", "keta3","rosas","error","mstat","type","mconn"]);
+        function formatDate(dateStr) {
+            if (!dateStr) return "";
+            try {
+                const date = new Date(dateStr);
+                if (isNaN(date.getTime())) return dateStr;
+                const day = String(date.getDate()).padStart(2, "0");
+                const month = String(date.getMonth() + 1).padStart(2, "0");
+                const year = date.getFullYear();
+                return `${day}/${month}/${year}`;
+            } catch (e) {
+                return dateStr;
+            }
+        }
 
-            const ensurePlaceholder = (select) => {
+        function showEmptyState() {
+            tableBody.innerHTML = `
+                <tr id="noDataRow">
+                    <td colspan="15" class="no-data-cell">
+                        <ion-icon name="document-outline" style="font-size: 48px; color: #ccc;"></ion-icon>
+                        <p style="margin-top: 10px; color: #666;">لا توجد بيانات لعرضها</p>
+                        <p style="color: #999; font-size: 14px;">لم يتم العثور على عدادات</p>
+                    </td>
+                </tr>
+            `;
+            updateRowCount();
+        }
+
+        function updateRowCount() {
+            const rows = document.querySelectorAll("#tableBody tr:not(#noDataRow)");
+            if (rowCount) rowCount.textContent = rows.length;
+        }
+
+        function enableAddNewOptions() {
+            const exclude = new Set(["handsa", "keta3", "type", "mconn"]);
+            
+            document.querySelectorAll("select").forEach((select) => {
                 const id = (select.id || "").toLowerCase();
                 if (exclude.has(id)) return;
                 if (select.querySelector(".add-new-option")) return;
+                
                 const opt = document.createElement("option");
                 opt.value = "ADD_NEW";
                 opt.className = "add-new-option";
                 opt.textContent = "➕ إضافة نوع جديد...";
                 select.appendChild(opt);
-            };
-
-            const attachHandler = (select) => {
-                const id = (select.id || "").toLowerCase();
-                if (exclude.has(id)) return;
+                
                 select.addEventListener("change", async (e) => {
                     if (e.target.value !== "ADD_NEW") return;
-
+                    
                     const { value: newValue } = await Swal.fire({
                         title: "إضافة خيار جديد",
                         input: "text",
@@ -377,117 +403,193 @@
                         showCancelButton: true,
                         confirmButtonText: "حفظ",
                         cancelButtonText: "إلغاء",
-                        inputValidator: (v) =>
-                            !v?.trim() ? "يرجى إدخال نص صحيح" : null,
+                        inputValidator: (v) => !v?.trim() ? "يرجى إدخال نص صحيح" : null,
                     });
-
+                    
                     const trimmed = newValue?.trim();
                     if (!trimmed) {
                         select.value = "";
                         return;
                     }
-
+                    
                     const exists = Array.from(select.options).some(
-                        (opt) =>
-                            opt.value.toLowerCase() === trimmed.toLowerCase() &&
-                            opt.value !== "ADD_NEW",
+                        (opt) => opt.value.toLowerCase() === trimmed.toLowerCase() && opt.value !== "ADD_NEW"
                     );
-
+                    
                     if (exists) {
                         toast("الخيار موجود بالفعل", "info");
                         select.value = trimmed;
                         return;
                     }
-
+                    
                     const option = document.createElement("option");
                     option.value = trimmed;
                     option.textContent = trimmed;
-
                     const addNewOption = select.querySelector(".add-new-option");
                     select.insertBefore(option, addNewOption);
                     select.value = trimmed;
                     toast("تمت إضافة الخيار الجديد");
                 });
-            };
-
-            document.querySelectorAll("select").forEach((select) => {
-                ensurePlaceholder(select);
-                attachHandler(select);
             });
         }
-        enableAddNewOptions();
 
-        function formatDate(dateStr) {
-            if (!dateStr) return '';
-            const date = new Date(dateStr);
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}/${month}/${year}`;
-        }
-
+        // Fetch records from BOTH databases
         async function fetchData() {
-            tableBody.innerHTML = "<tr><td colspan='12' class='no-data-cell'>جاري التحميل...</td></tr>";
+            tableBody.innerHTML = "<tr><td colspan='15' class='no-data-cell'>جاري التحميل...</td></tr>";
 
             Swal.fire({
-                title: 'جاري جلب البيانات...',
+                title: "جاري جلب البيانات...",
                 allowOutsideClick: false,
-                didOpen: () => Swal.showLoading()
+                didOpen: () => Swal.showLoading(),
             });
 
             try {
-                const snap = await get(ref(db, "Takheen"));
-                tableBody.innerHTML = "";
-
-                if (!snap.exists()) {
-                    tableBody.innerHTML = `
-                    <tr id="noDataRow">
-                        <td colspan="11" class="no-data-cell">
-                            <ion-icon name="document-outline"></ion-icon>
-                            <p>لا توجد بيانات لعرضها</p>
-                            <p>ابدأ بإضافة بيانات جديدة</p>
-                        </td>
-                    </tr>`;
-                    updateRowCount();
-                    Swal.close();
-                    return;
+                allData = [];
+                
+                // Fetch from db_Out_off
+                const mainSnapshot = await get(ref(db, "db_Out_off"));
+                if (mainSnapshot.exists()) {
+                    mainSnapshot.forEach((child) => {
+                        const record = child.val().otherdata || child.val();
+                        // Only show records that have been takheened
+                        if (record.Takheenfor && record.Takheenfor !== "") {
+                            allData.push({
+                                ...record,
+                                firebaseKey: child.key,
+                                source: "db_Out_off",
+                                MNO: record.MNO || "",
+                                MNAME: record.MNAME || "",
+                                Type: record.Type || "",
+                                Connection: record.Connection || "",
+                                YEAR: record.YEAR || "",
+                                Keta3: record.Keta3 || "",
+                                Handsa: record.Handsa || "",
+                                Mtype: record.Mtype || "",
+                                Removingfor: record.Removingfor || "",
+                                Mremovingfor: record.Mremovingfor || "",
+                                Takheenfor: record.Takheenfor || "",
+                                Uploaddate: record.Uploaddate || "",
+                                Takheendate: record.Takheendate || "",
+                                Notes: record.Notes || ""
+                            });
+                        }
+                    });
+                }
+                
+                // Fetch from Archive_Takheen
+                const archiveSnapshot = await get(ref(db, "Archive_Takheen"));
+                if (archiveSnapshot.exists()) {
+                    archiveSnapshot.forEach((child) => {
+                        const record = child.val().otherdata || child.val();
+                        allData.push({
+                            ...record,
+                            firebaseKey: child.key,
+                            source: "Archive_Takheen",
+                            MNO: record.MNO || "",
+                            MNAME: record.MNAME || "",
+                            Type: record.Type || "",
+                            Connection: record.Connection || "",
+                            YEAR: record.YEAR || "",
+                            Keta3: record.Keta3 || "",
+                            Handsa: record.Handsa || "",
+                            Mtype: record.Mtype || "",
+                            Removingfor: record.Removingfor || "",
+                            Mremovingfor: record.Mremovingfor || "",
+                            Takheenfor: record.Takheenfor || "",
+                            Uploaddate: record.Uploaddate || "",
+                            Takheendate: record.Takheendate || "",
+                            Notes: record.Notes || ""
+                        });
+                    });
                 }
 
-                snap.forEach(c => {
-                    const d = c.val().otherdata || c.val();
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = `
-                        <td>${d.Type || ''}</td>
-                        <td>${d.MNO || ''}</td>
-                        <td>${d.MNAME || ''}</td>
-                        <td>${d.Mtype || ''}</td>
-                        <td>${d.Connection || ''}</td>
-                        <td>${d.YEAR || ''}</td>
-                        <td>${d.Keta3 || ''}</td>
-                        <td>${d.Handsa || ''}</td>
-                        <td>${d.Removingfor || ''}</td>
-                        <td>${formatDate(d.Uploaddate)}</td>
-                        <td>${d.MRemovingfor || ''}</td>
-                        <td>${d.Takheenfor || ''}</td>
-                        <td>${formatDate(d.Takheendate)}</td>
-                        <td>${d.Notes || ''}</td>
-                    `;
-                    tr.onclick = () => fillForm(d, c.key, tr);
-                    tableBody.appendChild(tr);
-                });
-
+                console.log("إجمالي البيانات المجمعة:", allData.length);
+                console.log("من db_Out_off:", allData.filter(d => d.source === "db_Out_off").length);
+                console.log("من Archive_Takheen:", allData.filter(d => d.source === "Archive_Takheen").length);
+                
+                filteredData = [...allData];
+                renderTable();
                 Swal.close();
-                updateRowCount();
+
+                if (allData.length === 0) {
+                    Swal.fire({
+                        icon: "info",
+                        title: "لا توجد بيانات",
+                        text: "لا توجد أي بيانات في قاعدة البيانات",
+                        confirmButtonText: "حسناً"
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "success",
+                        title: "تم التحميل",
+                        text: `تم تحميل ${allData.length} سجل (${allData.filter(d => d.source === "db_Out_off").length} من الرئيسي، ${allData.filter(d => d.source === "Archive_Takheen").length} من الأرشيف)`,
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
             } catch (err) {
-                Swal.fire('خطأ', 'فشل تحميل البيانات', 'error');
+                Swal.fire("خطأ", "فشل تحميل البيانات: " + err.message, "error");
                 console.error(err);
+                showEmptyState();
             }
         }
 
-        function fillForm(d, key, row) {
+        function renderTable() {
+            tableBody.innerHTML = "";
+
+            if (filteredData.length === 0) {
+                showEmptyState();
+                return;
+            }
+
+            filteredData.forEach((d) => {
+                const tr = document.createElement("tr");
+                tr.setAttribute("data-key", d.firebaseKey);
+                tr.setAttribute("data-source", d.source);
+                
+                // Add source badge to status
+                const sourceBadge = d.source === "Archive_Takheen" ? "📦 أرشيف" : "📁 رئيسي";
+                const statusText = "تم التكهين";
+                const statusClass = "status completed";
+                
+                tr.innerHTML = `
+                    <td>${d.Type || ""}${d.source === "Archive_Takheen" ? " <small>(أرشيف)</small>" : ""}</td>
+                    <td>${d.MNO || ""}</td>
+                    <td>${d.MNAME || ""}</td>
+                    <td>${d.Mtype || ""}</td>
+                    <td>${d.Connection || ""}</td>
+                    <td>${d.YEAR || ""}</td>
+                    <td>${d.Keta3 || ""}</td>
+                    <td>${d.Handsa || ""}</td>
+                    <td>${d.Removingfor || ""}</td>
+                    <td>${formatDate(d.Uploaddate)}</td>
+                    <td>${d.Mremovingfor || ""}</td>
+                    <td>${d.Takheenfor || ""}</td>
+                    <td>${formatDate(d.Takheendate)}</td>
+                    <td>${d.Notes || ""}</td>
+                    <td><span class="${statusClass}">${statusText} ${sourceBadge}</span></td>
+                `;
+                
+                tr.onclick = (e) => {
+                    if (e.target.tagName !== 'BUTTON') {
+                        fillForm(d, d.firebaseKey, tr, d.source);
+                    }
+                };
+                tableBody.appendChild(tr);
+            });
+            updateRowCount();
+        }
+
+        function fillForm(d, key, row, source) {
             currentKey = key;
-            document.querySelectorAll(".selected-row").forEach(r => r.classList.remove("selected-row"));
+            dataSource = source;
+            
+            document.querySelectorAll(".selected-row").forEach(r => {
+                r.classList.remove("selected-row");
+                r.style.backgroundColor = "";
+            });
             row.classList.add("selected-row");
+            row.style.backgroundColor = "#e3f2fd";
 
             el("mno").value = d.MNO || "";
             el("mname").value = d.MNAME || "";
@@ -498,28 +600,35 @@
             el("handsa").value = d.Handsa || "";
             el("mtype").value = d.Mtype || "";
             el("removingfor").value = d.Removingfor || "";
-            el("mremovingfor").value = d.MRemovingfor || "";
+            el("mremovingfor").value = d.Mremovingfor || "";
             el("takheenfor").value = d.Takheenfor || "";
             el("uploaddate").value = d.Uploaddate || "";
+            el("takheendate").value = d.Takheendate || "";
             el("notes").value = d.Notes || "";
 
-            toast(`تم اختيار العداد: ${d.MNO}`, 'info');
+            toast(`تم اختيار العداد: ${d.MNO} (${source === "Archive_Takheen" ? "أرشيف" : "رئيسي"})`, "info");
         }
-
 
         async function editData() {
             if (!currentKey) {
-                Swal.fire('تحذير', 'يرجى اختيار سجل للتعديل', 'warning');
+                Swal.fire("تحذير", "يرجى اختيار سجل للتعديل", "warning");
                 return;
             }
 
             const result = await Swal.fire({
-                title: 'هل أنت متأكد؟',
-                text: "سيتم تعديل البيانات المحددة",
-                icon: 'warning',
+                title: "هل أنت متأكد؟",
+                text: "سيتم تعديل البيانات المحددة في كلا النظامين",
+                icon: "warning",
                 showCancelButton: true,
-                confirmButtonText: 'نعم',
-                cancelButtonText: 'إلغاء'
+                confirmButtonText: "نعم",
+                cancelButtonText: "إلغاء",
+            });
+
+            if (!result.isConfirmed) return;
+
+            Swal.fire({
+                title: "جاري التعديل...",
+                didOpen: () => Swal.showLoading(),
             });
 
             const meterData = {
@@ -532,118 +641,202 @@
                 Connection: el("mconn").value,
                 YEAR: el("year").value,
                 Removingfor: el("removingfor").value,
-                MRemovingfor: el("mremovingfor").value,
+                Mremovingfor: el("mremovingfor").value,
                 Takheenfor: el("takheenfor").value,
                 Uploaddate: el("uploaddate").value,
                 Takheendate: el("takheendate").value,
                 Notes: el("notes").value,
-                Timestamp: new Date().toISOString()
+                LastModified: new Date().toISOString(),
+                Status: "تم التكهين"
             };
 
             try {
-                await update(ref(db, `Takheen/${currentKey}`), { otherdata: meterData });
-                await set(ref(db, `Archive_Takheen/${currentKey}`), { otherdata: meterData });
+                // Update in db_Out_off if it exists there
+                const mainRef = ref(db, `db_Out_off/${currentKey}`);
+                const mainSnapshot = await get(mainRef);
+                if (mainSnapshot.exists()) {
+                    await update(mainRef, { otherdata: meterData });
+                }
+                
+                // Update in Archive_Takheen
+                await set(ref(db, `Archive_Takheen/${currentKey}`), {
+                    otherdata: {
+                        ...meterData,
+                        ArchivedAt: new Date().toISOString(),
+                        LastModified: new Date().toISOString()
+                    }
+                });
 
-                Swal.fire('تم التعديل!', 'تم تحديث السجل بنجاح.', 'success');
+                Swal.fire("تم التعديل!", "تم تحديث السجل بنجاح في كلا النظامين.", "success");
                 fetchData();
                 clearFilters();
-
             } catch (err) {
-                Swal.fire('خطأ', 'فشل تعديل البيانات: ' + err.message, 'error');
+                Swal.fire("خطأ", "فشل تعديل البيانات: " + err.message, "error");
             }
         }
 
         async function deleteData() {
-            if (!currentKey && !el("mno").value) {
-                Swal.fire('تنبيه', 'يرجى اختيار سجل للحذف', 'warning');
+            if (!currentKey) {
+                Swal.fire("تنبيه", "يرجى اختيار سجل للحذف", "warning");
                 return;
             }
 
+            const meterNumber = el("mno").value;
+
             const result = await Swal.fire({
-                title: 'هل أنت متأكد؟',
-                text: "لن تتمكن من التراجع عن هذا!",
-                icon: 'warning',
+                title: "تأكيد الحذف",
+                html: `هل أنت متأكد من حذف العداد رقم <strong>${meterNumber}</strong>؟<br><small style="color: red;">سيتم الحذف من كلا النظامين!</small>`,
+                icon: "warning",
                 showCancelButton: true,
-                confirmButtonText: 'نعم',
-                cancelButtonText: 'إلغاء'
+                confirmButtonText: "نعم، احذف",
+                cancelButtonText: "إلغاء",
+                confirmButtonColor: "#d33",
             });
 
-            if (result.isConfirmed) {
-                Swal.fire({ title: 'جاري الحذف...', didOpen: () => Swal.showLoading() });
-                try {
-                    const key = currentKey || el("mno").value.replace(/[.#$[\]]/g, '_');
-                    await remove(ref(db, `Takheen/${key}`));
-                    Swal.fire('تم الحذف!', 'تم إزالة السجل بنجاح.', 'success');
-                    fetchData();
-                    clearFilters();
+            if (!result.isConfirmed) return;
 
-                } catch (err) {
-                    Swal.fire('خطأ', 'فشل الحذف: ' + err.message, 'error');
-                }
+            Swal.fire({
+                title: "جاري الحذف...",
+                didOpen: () => Swal.showLoading(),
+            });
+
+            try {
+                // Delete from db_Out_off
+                await remove(ref(db, `db_Out_off/${currentKey}`));
+                
+                // Delete from Archive_Takheen
+                await remove(ref(db, `Archive_Takheen/${currentKey}`));
+
+                Swal.fire({
+                    icon: "success",
+                    title: "تم الحذف!",
+                    text: `تم حذف العداد رقم ${meterNumber} بنجاح من كلا النظامين`,
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+                fetchData();
+                clearFilters();
+                currentKey = null;
+                dataSource = null;
+            } catch (err) {
+                Swal.fire("خطأ", "فشل حذف البيانات: " + err.message, "error");
+                console.error("Delete error:", err);
             }
-        }
-
-        function updateRowCount() {
-            const rows = document.querySelectorAll("#tableBody tr:not(#noDataRow)");
-            rowCount.textContent = rows.length;
-        }
-
-        function searchTable() {
-            const term = searchInput.value.toLowerCase();
-            const rows = document.querySelectorAll("#tableBody tr");
-            rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(term) ? '' : 'none';
-            });
-            updateRowCount();
         }
 
         function clearFilters() {
-            document.querySelectorAll('input, select, textarea').forEach(input => input.value = "");
-            setTodayDates();
+            document.querySelectorAll("input, select, textarea").forEach(input => {
+                if (input.id !== "searchInput" && input.id !== "currentDate") {
+                    input.value = "";
+                }
+            });
             currentKey = null;
-            document.querySelectorAll(".selected-row").forEach(r => r.classList.remove("selected-row"));
-            toast('تم تنظيف النموذج', 'success');
+            dataSource = null;
+            document.querySelectorAll(".selected-row").forEach(r => {
+                r.classList.remove("selected-row");
+                r.style.backgroundColor = "";
+            });
+            toast("تم تنظيف النموذج", "success");
         }
 
-        el("editBtn").onclick = editData;
-        el("deleteBtn").onclick = deleteData;
-        el("clearBtn").onclick = clearFilters;
-        el("searchInput").oninput = searchTable;
-        el("scrollUp").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-        el("scrollDown").onclick = () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        function searchTable() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
 
-        setTodayDates();
-        fetchData();
+            if (!searchTerm) {
+                filteredData = [...allData];
+            } else {
+                filteredData = allData.filter(d =>
+                    (d.MNO && d.MNO.toString().toLowerCase().includes(searchTerm)) ||
+                    (d.MNAME && d.MNAME.toLowerCase().includes(searchTerm)) ||
+                    (d.Handsa && d.Handsa.toLowerCase().includes(searchTerm))
+                );
+            }
 
+            renderTable();
+        }
 
+        function exportToExcel() {
+            if (!filteredData.length) {
+                return Swal.fire({
+                    icon: "warning",
+                    title: "لا توجد بيانات",
+                    text: "لا يمكن تصدير جدول فارغ",
+                    confirmButtonColor: "#f39c12",
+                });
+            }
 
-        // Dropdown Menu Functionality
+            const dataToExport = filteredData.map((o, i) => ({
+                م: i + 1,
+                "المصدر": o.source === "Archive_Takheen" ? "أرشيف" : "رئيسي",
+                "نوع النظام": o.Type || "",
+                "رقم العداد": o.MNO || "",
+                "اسم المشترك": o.MNAME || "",
+                "نوع العداد": o.Mtype || "",
+                "نوع التوصيل": o.Connection || "",
+                "سنة الصنع": o.YEAR || "",
+                القطاع: o.Keta3 || "",
+                الهندسة: o.Handsa || "",
+                "سبب الرفع": o.Removingfor || "",
+                "تاريخ الرفع": formatDate(o.Uploaddate),
+                "تقرير فحص الهندسة": o.Mremovingfor || "",
+                "سبب التكهين": o.Takheenfor || "",
+                "تاريخ التكهين": formatDate(o.Takheendate),
+                ملاحظات: o.Notes || "",
+            }));
+
+            const ws = XLSX.utils.json_to_sheet(dataToExport);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "تقرير_التكهين");
+            XLSX.writeFile(wb, `تقرير_التكهين_${new Date().toISOString().slice(0, 10)}.xlsx`);
+
+            Swal.fire({
+                icon: "success",
+                title: "تم التصدير!",
+                text: "تم تحميل ملف Excel بنجاح",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+        }
+
+        // Event Listeners
+        document.getElementById("editBtn")?.addEventListener("click", editData);
+        document.getElementById("deleteBtn")?.addEventListener("click", deleteData);
+        document.getElementById("clearBtn")?.addEventListener("click", clearFilters);
+        document.getElementById("searchInput")?.addEventListener("input", searchTable);
+        document.getElementById("exportBtn")?.addEventListener("click", exportToExcel);
+        
+        document.getElementById("scrollUp")?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        document.getElementById("scrollDown")?.addEventListener("click", () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }));
+
+        // Dropdown Menu
         const btn = document.getElementById("dropdownBtn");
         const menu = document.getElementById("dropdownMenu");
 
-        btn.addEventListener("click", () => {
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
-        });
-
-        document.querySelectorAll('.dropdown-item[data-page]').forEach(item => {
-            item.addEventListener('click', () => {
-                const page = item.dataset.page;
-                window.open(page, '_blank'); // فتح في تبويب جديد
+        if (btn && menu) {
+            btn.addEventListener("click", () => {
+                menu.style.display = menu.style.display === "block" ? "none" : "block";
             });
-        });
 
-        // إغلاق عند الضغط خارج القائمة
-        document.addEventListener("click", e => {
-            if (!e.target.closest(".modern-dropdown")) {
-                menu.style.display = "none";
-            }
-        });
+            document.querySelectorAll(".dropdown-item[data-page]").forEach((item) => {
+                item.addEventListener("click", () => {
+                    const page = item.dataset.page;
+                    window.open(page, "_blank");
+                });
+            });
 
+            document.addEventListener("click", (e) => {
+                if (!e.target.closest(".modern-dropdown")) {
+                    menu.style.display = "none";
+                }
+            });
+        }
 
-
+        // Initialize
+        setTodayDate();
+        enableAddNewOptions();
+        fetchData();
     </script>
-
 </body>
 
 </html>
