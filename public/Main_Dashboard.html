@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <script src="gatekeeper.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة التحكم - نظام الفحص والصيانة</title>
+  <title>لوحة التحكم - نظام الفحص المعايرة</title>
 
   <link rel="stylesheet" type="text/css" href="Main_Dashboard.css">
 
@@ -85,36 +85,22 @@
             <div class="stat-content">
               <h4>الصيانة</h4>
               <div class="stat-numbers">
-                <div class="stat-item"><span class="stat-label">المستلمة</span><span class="stat-value"
-                    id="receivedMaintMeters">0</span></div>
+                
                 <div class="stat-item"><span class="stat-label">المنتهية</span><span class="stat-value"
                     id="calibratedMaintMeters">0</span></div>
-                <div class="stat-item"><span class="stat-label">المتبقية</span><span class="stat-value"
-                    id="remainingMaintMeters">0</span></div>
+              
               </div>
             </div>
           </div>
 
-          <div class="stat-card scrap">
-            <div class="stat-icon"><ion-icon name="trash-outline"></ion-icon></div>
-            <div class="stat-content">
-              <h4>نظام التكهين</h4>
-              <div class="stat-numbers">
-                <div class="stat-item"><span class="stat-label">إجمالي التكهين</span><span class="stat-value"
-                    id="totalTakheen">0</span></div>
-              </div>
-            </div>
-          </div>
 
           <div class="stat-card delivery">
             <div class="stat-icon"><ion-icon name="checkmark-done-circle-outline"></ion-icon></div>
             <div class="stat-content">
-              <h4>تسليم الهندسات[ فحص-صيانة]</h4>
+              <h4>تسليم الهندسات[ فحص]</h4>
               <div class="stat-numbers">
                 <div class="stat-item"><span class="stat-label">تسليم فحص</span><span class="stat-value"
                     id="recCalibValue">0</span></div>
-                <div class="stat-item"><span class="stat-label">تسليم صيانة</span><span class="stat-value"
-                    id="recMaintValue">0</span></div>
               </div>
             </div>
           </div>
@@ -147,25 +133,6 @@
           </button>
         </div>
 
-
-        <!-- <div class="dropdown-container">
-
-          <div class="dropdown-item admin-only">
-            <button class="dropdown-btn smart">
-              <span><ion-icon name="speedometer-outline"></ion-icon> نظام العدادات الذكية</span>
-              <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
-            </button>
-            <div class="dropdown-content">
-              <a href="Dashboard_Smart.html"><ion-icon name="analytics-outline"></ion-icon> لوحة التحكم</a>
-              <a href="SMART_Added_Mod.html"><ion-icon name="add-circle-outline"></ion-icon> اضافة عدادات</a>
-              <a href="SMART_Map.html"><ion-icon name="map-outline"></ion-icon> بحث بالأحداثيات</a>
-              <a href="SMART_Conv_Cord.html"><ion-icon name="locate-outline"></ion-icon> تحويل الأحداثيات</a>
-              <a href="SMART_R.html"><ion-icon name="document-outline"></ion-icon> التقارير</a>
-              <a href="SMART_Excel.html"><ion-icon name="cloud-download-outline"></ion-icon> تنزيل البيانات</a>
-              <a href="SMART_Admin.html"><ion-icon name="shield-checkmark-outline"></ion-icon> رفع البيانات</a>
-            </div>
-          </div> -->
-
         <div class="dropdown-item admin-only">
           <button class="dropdown-btn calibration">
             <span><ion-icon name="search-outline"></ion-icon> نظام الفحص والمعايرة</span>
@@ -180,18 +147,6 @@
           </div>
         </div>
 
-        <div class="dropdown-item">
-          <button class="dropdown-btn maintenance">
-            <span><ion-icon name="construct-outline"></ion-icon> نظام الصيانة</span>
-            <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
-          </button>
-          <div class="dropdown-content">
-            <a href="Entr_Maint.html">دخول صيانة</a>
-            <a href="Maint.html">صيانة عداد</a>
-            <a href="R_Maint.html">تقرير صيانة</a>
-            <a href="R_Maint_Archive.html">أرشيف الصيانة</a>
-          </div>
-        </div>
 
         <div class="dropdown-item">
           <button class="dropdown-btn reports">
@@ -202,27 +157,6 @@
             <a href="SMART_Help.html">Help</a>
           </div>
         </div>
-
-        <!-- <div class="dropdown-item admin-only">
-            <button class="dropdown-btn math">
-              <span><ion-icon name="flash-outline"></ion-icon> الحسابات الكهربية</span>
-              <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
-            </button> -->
-
-        <!-- <div class="dropdown-content">
-              <a href="Angles.html">تحليل الزوايا</a>
-              <a href="Munipilation_Report.html">الضبطية</a>
-              <a href="Add_Loads.html">اضافة احمال</a>
-              <a href="PF.html">حسابات معامل القدرة</a>
-              <a href="Calibrations.html">حسابات المعايرة</a>
-              <a href="M_T_Calculations.html">حسابات مفاقيد المحولات - الموتور</a>
-              <a href="Research.html">المادة العلمية لمنظومة العدادات الذكية</a>
-              <a href="Spex.html">المواصفات</a>
-              <a href="Tarrifs.html">التشريح</a>
-              <a href="Cables_V.D_Calculator.html">الكابلات-الفقد فى الجهد</a>
-              <a href="TVJ.html">TVJ</a>
-
-            </div> -->
 
     </div>
     </div>
@@ -292,7 +226,7 @@
       statusChart = new Chart(ctx1, {
         type: "doughnut",
         data: {
-          labels: ["فحص مكتمل", "فحص متبقي", "صيانة مكتمل", "صيانة متبقية"],
+          labels: ["فحص مكتمل", "فحص متبقي"],
           datasets: [{
             data: [countC, valCount(ec) - countC, countM, valCount(em) - countM],
             backgroundColor: ["#2ecc71", "#f1c40f", "#3498db", "#e74c3c"]
@@ -314,7 +248,7 @@
       performanceChart = new Chart(ctx2, {
         type: "bar",
         data: {
-          labels: ["منظومة الفحص", "منظومة الصيانة"],
+          labels: ["منظومة الفحص"],
           datasets: [
             { label: 'المستلم', data: [valCount(ec), valCount(em)], backgroundColor: '#9b59b6' },
             { label: 'المنجز', data: [countC, countM], backgroundColor: '#2ecc71' }
@@ -344,12 +278,8 @@
         document.getElementById("receivedMeters").textContent = valCount(ec);
         document.getElementById("calibratedMeters").textContent = valCount(c);
         document.getElementById("remainingMeters").textContent = valCount(ec) - valCount(c);
-        document.getElementById("receivedMaintMeters").textContent = valCount(em);
         document.getElementById("calibratedMaintMeters").textContent = valCount(m);
-        document.getElementById("remainingMaintMeters").textContent = valCount(em) - valCount(m);
-        document.getElementById("totalTakheen").textContent = valCount(t);
         document.getElementById("recCalibValue").textContent = valCount(rc);
-        document.getElementById("recMaintValue").textContent = valCount(rm);
 
         updateCharts(ec, c, em, m);
         overlay.style.display = "none";
